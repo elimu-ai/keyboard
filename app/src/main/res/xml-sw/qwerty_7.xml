@@ -12,7 +12,7 @@
         <Key android:codes="52" android:keyLabel="4"/>
         <Key android:codes="53" android:keyLabel="5"/>
         <Key android:codes="54" android:keyLabel="6"/>
-        <!--<Key android:codes="55" android:keyLabel="7"/>-->
+        <Key android:codes="55" android:keyLabel="7"/>
         <!--<Key android:codes="56" android:keyLabel="8"/>-->
         <!--<Key android:codes="57" android:keyLabel="9"/>-->
         <Key android:codes="-5" android:keyIcon="@drawable/ic_backspace_grey_60dp" android:isRepeatable="true" android:keyEdgeFlags="right" />
@@ -24,8 +24,8 @@
         <Key android:codes="110" android:keyLabel="n"/>
         <Key android:codes="107" android:keyLabel="k"/>
         <Key android:codes="109" android:keyLabel="m"/>
+        <Key android:codes="101" android:keyLabel="e"/>
         <!--<Key android:codes="119" android:keyLabel="w" android:keyEdgeFlags="left" />-->
-        <!--<Key android:codes="101" android:keyLabel="e"/>-->
         <!--<Key android:codes="114" android:keyLabel="r"/>-->
         <!--<Key android:codes="116" android:keyLabel="t"/>-->
         <!--<Key android:codes="121" android:keyLabel="y"/>-->

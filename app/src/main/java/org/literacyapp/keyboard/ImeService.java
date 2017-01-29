@@ -41,10 +41,27 @@ public class ImeService extends InputMethodService implements KeyboardView.OnKey
         Log.d(getClass().getName(), "availableLettersSet: " + availableLettersSet);
         Set<String> availableNumbersSet = sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_NUMBERS, null);
         Log.d(getClass().getName(), "availableNumbersSet: " + availableNumbersSet);
-        // TODO
+
+        // TODO: add custom Keyboard
+        if (availableLettersSet == null) {
+            keyboard = new Keyboard(this, R.xml.qwerty);
+        } else if (availableLettersSet.size() <= 3) {
+            keyboard = new Keyboard(this, R.xml.qwerty);
+        } else if (availableLettersSet.size() == 4) {
+            keyboard = new Keyboard(this, R.xml.qwerty_4);
+        } else if (availableLettersSet.size() == 5) {
+            keyboard = new Keyboard(this, R.xml.qwerty_5);
+        } else if (availableLettersSet.size() == 6) {
+            keyboard = new Keyboard(this, R.xml.qwerty_6);
+        } else if (availableLettersSet.size() == 7) {
+            keyboard = new Keyboard(this, R.xml.qwerty_7);
+        } else if (availableLettersSet.size() == 8) {
+            keyboard = new Keyboard(this, R.xml.qwerty_8);
+        } else {
+            keyboard = new Keyboard(this, R.xml.qwerty_8);
+        }
 
         keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
-        keyboard = new Keyboard(this, R.xml.qwerty);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setPreviewEnabled(false);
         keyboardView.setOnKeyboardActionListener(this);

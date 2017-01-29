@@ -10,7 +10,7 @@
         <Key android:codes="50" android:keyLabel="2"/>
         <Key android:codes="51" android:keyLabel="3"/>
         <Key android:codes="52" android:keyLabel="4"/>
-        <!--<Key android:codes="53" android:keyLabel="5"/>-->
+        <Key android:codes="53" android:keyLabel="5"/>
         <!--<Key android:codes="54" android:keyLabel="6"/>-->
         <!--<Key android:codes="55" android:keyLabel="7"/>-->
         <!--<Key android:codes="56" android:keyLabel="8"/>-->
@@ -22,6 +22,7 @@
         <Key android:codes="105" android:keyLabel="i" />
         <Key android:codes="117" android:keyLabel="u" />
         <Key android:codes="110" android:keyLabel="n"/>
+        <Key android:codes="107" android:keyLabel="k"/>
         <!--<Key android:codes="119" android:keyLabel="w" android:keyEdgeFlags="left" />-->
         <!--<Key android:codes="101" android:keyLabel="e"/>-->
         <!--<Key android:codes="114" android:keyLabel="r"/>-->
@@ -37,7 +38,6 @@
         <!--<Key android:codes="103" android:keyLabel="g"/>-->
         <!--<Key android:codes="104" android:keyLabel="h"/>-->
         <!--<Key android:codes="106" android:keyLabel="j"/>-->
-        <!--<Key android:codes="107" android:keyLabel="k"/>-->
         <!--<Key android:codes="108" android:keyLabel="l"/>-->
         <!--<Key android:codes="35,64" android:keyLabel="\# \@" android:keyEdgeFlags="right"/>-->
     <!--</Row>-->
