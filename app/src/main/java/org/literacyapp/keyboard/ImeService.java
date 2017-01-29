@@ -1,17 +1,21 @@
 package org.literacyapp.keyboard;
 
+import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 
+import org.literacyapp.keyboard.receiver.StudentUpdatedReceiver;
 import org.literacyapp.keyboard.util.MediaPlayerHelper;
 
 import java.util.Locale;
+import java.util.Set;
 
 public class ImeService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
@@ -30,6 +34,14 @@ public class ImeService extends InputMethodService implements KeyboardView.OnKey
     @Override
     public View onCreateInputView() {
         Log.i(getClass().getName(), "onCreateInputView");
+
+        // Personalize available letters/numbers
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Set<String> availableLettersSet = sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_LETTERS, null);
+        Log.d(getClass().getName(), "availableLettersSet: " + availableLettersSet);
+        Set<String> availableNumbersSet = sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_NUMBERS, null);
+        Log.d(getClass().getName(), "availableNumbersSet: " + availableNumbersSet);
+        // TODO
 
         keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
         keyboard = new Keyboard(this, R.xml.qwerty);

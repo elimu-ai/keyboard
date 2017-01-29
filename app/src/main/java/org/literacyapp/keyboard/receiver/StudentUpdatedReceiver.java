@@ -13,8 +13,8 @@ import java.util.Set;
 
 public class StudentUpdatedReceiver extends BroadcastReceiver {
 
+    public static final String PREF_STUDENT_LETTERS = "pref_student_letters";
     public static final String PREF_STUDENT_NUMBERS = "pref_student_numbers";
-    public static final String PREF_STUDENT_NUMERACY_SKILLS = "pref_student_numeracy_skills";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -22,13 +22,22 @@ public class StudentUpdatedReceiver extends BroadcastReceiver {
 
         // Customize the user interface to match the current Student's level
 
+        ArrayList<String> availableLetters = intent.getStringArrayListExtra("availableLetters");
+        Log.i(getClass().getName(), "availableLetters: " + availableLetters);
+
         ArrayList<String> availableNumbers = intent.getStringArrayListExtra("availableNumbers");
         Log.i(getClass().getName(), "availableNumbers: " + availableNumbers);
 
-        ArrayList<String> availableNumeracySkills = intent.getStringArrayListExtra("availableNumeracySkills");
-        Log.i(getClass().getName(), "availableNumeracySkills: " + availableNumeracySkills);
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        if (availableLetters != null) {
+            Set<String> availableLetterSet = new HashSet<>();
+            for (String availableLetter : availableLetters) {
+                availableLetterSet.add(availableLetter);
+            }
+            Log.i(getClass().getName(), "Storing availableLettersSet: " + availableLetterSet);
+            sharedPreferences.edit().putStringSet(PREF_STUDENT_LETTERS, availableLetterSet).commit();
+        }
 
         if (availableNumbers != null) {
             Set<String> availableNumberSet = new HashSet<>();
@@ -37,15 +46,6 @@ public class StudentUpdatedReceiver extends BroadcastReceiver {
             }
             Log.i(getClass().getName(), "Storing availableNumbersSet: " + availableNumberSet);
             sharedPreferences.edit().putStringSet(PREF_STUDENT_NUMBERS, availableNumberSet).commit();
-        }
-
-        if (availableNumeracySkills != null) {
-            Set<String> availableNumeracySkillSet = new HashSet<>();
-            for (String availableNumeracySkill : availableNumeracySkills) {
-                availableNumeracySkillSet.add(availableNumeracySkill);
-            }
-            Log.i(getClass().getName(), "Storing availableNumeracySkillSet: " + availableNumeracySkillSet);
-            sharedPreferences.edit().putStringSet(PREF_STUDENT_NUMERACY_SKILLS, availableNumeracySkillSet).commit();
         }
     }
 }

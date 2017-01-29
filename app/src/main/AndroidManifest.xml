@@ -19,6 +19,16 @@
                 <action android:name="android.view.InputMethod" />
             </intent-filter>
         </service>
+
+        <receiver
+            android:name="org.literacyapp.keyboard.receiver.StudentUpdatedReceiver"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="literacyapp.intent.action.STUDENT_UPDATED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
