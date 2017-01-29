@@ -21,14 +21,28 @@ public class ImeService extends InputMethodService implements KeyboardView.OnKey
     private boolean caps = false;
 
     @Override
+    public void onCreate() {
+        Log.i(getClass().getName(), "onCreate");
+        super.onCreate();
+    }
+
+    @Override
     public View onCreateInputView() {
         Log.i(getClass().getName(), "onCreateInputView");
+
         keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
         keyboard = new Keyboard(this, R.xml.qwerty);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setPreviewEnabled(false);
         keyboardView.setOnKeyboardActionListener(this);
+
         return keyboardView;
+    }
+
+    @Override
+    public void updateFullscreenMode() {
+        Log.i(getClass().getName(), "updateFullscreenMode");
+//        super.updateFullscreenMode();
     }
 
     @Override
