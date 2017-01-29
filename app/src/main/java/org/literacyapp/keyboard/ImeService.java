@@ -4,11 +4,12 @@ import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
+
+import org.literacyapp.keyboard.util.MediaPlayerHelper;
 
 import java.util.Locale;
 
@@ -89,152 +90,116 @@ public class ImeService extends InputMethodService implements KeyboardView.OnKey
 
     private void playClick(int keyCode){
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-        MediaPlayer mediaPlayer = null;
+
         switch(keyCode) {
             case 48:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_0);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_0);
                 break;
             case 49:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_1);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_1);
                 break;
             case 50:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_2);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_2);
                 break;
             case 51:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_3);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_3);
                 break;
             case 52:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_4);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_4);
                 break;
             case 53:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_5);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_5);
                 break;
             case 54:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_6);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_6);
                 break;
             case 55:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_7);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_7);
                 break;
             case 56:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_8);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_8);
                 break;
             case 57:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_9);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_9);
                 break;
 
             case 97:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_a);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_a);
                 break;
             case 98:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_b);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_b);
                 break;
             case 99:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_c);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_c);
                 break;
             case 100:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_d);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_d);
                 break;
             case 101:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_e);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_e);
                 break;
             case 102:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_f);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_f);
                 break;
             case 103:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_g);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_g);
                 break;
             case 104:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_h);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_h);
                 break;
             case 105:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_i);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_i);
                 break;
             case 106:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_j);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_j);
                 break;
             case 107:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_k);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_k);
                 break;
             case 108:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_l);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_l);
                 break;
             case 109:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_m);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_m);
                 break;
             case 110:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_n);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_n);
                 break;
             case 111:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_o);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_o);
                 break;
             case 112:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_p);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_p);
                 break;
             case 113:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_qu);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_qu);
                 break;
             case 114:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_r);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_r);
                 break;
             case 115:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_s);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_s);
                 break;
             case 116:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_t);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_t);
                 break;
             case 117:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_u);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_u);
                 break;
             case 118:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_v);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_v);
                 break;
             case 119:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_w);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_w);
                 break;
             case 120:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_x);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_x);
                 break;
             case 121:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_y);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_y);
                 break;
             case 122:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_z);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_z);
                 break;
 
             case 32:
@@ -253,144 +218,110 @@ public class ImeService extends InputMethodService implements KeyboardView.OnKey
 
     private void playClickSw(int keyCode){
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-        MediaPlayer mediaPlayer = null;
+
         switch(keyCode) {
             case 48:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_0);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_0);
                 break;
             case 49:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_1);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_1);
                 break;
             case 50:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_2);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_2);
                 break;
             case 51:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_3);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_3);
                 break;
             case 52:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_4);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_4);
                 break;
             case 53:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_5);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_5);
                 break;
             case 54:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_6);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_6);
                 break;
             case 55:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_7);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_7);
                 break;
             case 56:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_8);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_8);
                 break;
             case 57:
-                mediaPlayer = MediaPlayer.create(this, R.raw.digit_9);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_9);
                 break;
 
             case 97:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_a);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_a);
                 break;
             case 98:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_b);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_b);
                 break;
             case 99:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_c);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_c);
                 break;
             case 100:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_d);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_d);
                 break;
             case 101:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_e);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_e);
                 break;
             case 102:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_f);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_f);
                 break;
             case 103:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_g);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_g);
                 break;
             case 104:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_h);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_h);
                 break;
             case 105:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_i);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_i);
                 break;
             case 106:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_j);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_j);
                 break;
             case 107:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_k);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_k);
                 break;
             case 108:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_l);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_l);
                 break;
             case 109:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_m);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_m);
                 break;
             case 110:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_n);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_n);
                 break;
             case 111:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_o);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_o);
                 break;
             case 112:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_p);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_p);
                 break;
             case 114:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_r);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_r);
                 break;
             case 115:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_s);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_s);
                 break;
             case 116:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_t);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_t);
                 break;
             case 117:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_u);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_u);
                 break;
             case 118:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_v);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_v);
                 break;
             case 119:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_w);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_w);
                 break;
             case 121:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_y);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_y);
                 break;
             case 122:
-                mediaPlayer = MediaPlayer.create(this, R.raw.letter_sound_z);
-                mediaPlayer.start();
+                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_z);
                 break;
 
             case 32:
