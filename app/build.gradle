@@ -8,8 +8,8 @@ android {
         applicationId "org.literacyapp.keyboard"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 1000003
-        versionName "1.0.3"
+        versionCode 1000004
+        versionName "1.0.4-SNAPSHOT"
     }
 
     buildTypes {
