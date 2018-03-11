@@ -1,2 +1,2 @@
-# literacyapp-keyboard
+# keyboard
 Android system keyboard
