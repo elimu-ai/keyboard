@@ -1,2 +1,3 @@
-# keyboard
-Android system keyboard
+# Keyboard
+
+Custom Android keyboard which systematically introduces new letters and numbers.
