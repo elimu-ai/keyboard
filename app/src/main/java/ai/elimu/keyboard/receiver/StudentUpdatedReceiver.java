@@ -1,4 +1,4 @@
-package org.literacyapp.keyboard.receiver;
+package ai.elimu.keyboard.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package org.literacyapp.keyboard;
+package ai.elimu.keyboard;
 
 import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
@@ -11,8 +11,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 
-import org.literacyapp.keyboard.receiver.StudentUpdatedReceiver;
-import org.literacyapp.keyboard.util.MediaPlayerHelper;
+import ai.elimu.keyboard.receiver.StudentUpdatedReceiver;
+import ai.elimu.keyboard.util.MediaPlayerHelper;
 
 import java.util.Locale;
 import java.util.Set;

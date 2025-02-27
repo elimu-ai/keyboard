@@ -1,4 +1,4 @@
-package org.literacyapp.keyboard.util;
+package ai.elimu.keyboard.util;
 
 import android.content.Context;
 import android.media.MediaPlayer;
