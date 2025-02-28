@@ -1,4 +1,4 @@
-package org.literacyapp.keyboard;
+package ai.elimu.keyboard;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

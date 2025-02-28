@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.literacyapp.keyboard">
+    package="ai.elimu.keyboard">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true">
 
         <service
-            android:name=".ImeService"
+            android:name="ai.elimu.keyboard.ImeService"
             android:permission="android.permission.BIND_INPUT_METHOD"
             android:enabled="true"
             android:exported="true">
@@ -21,12 +21,12 @@
         </service>
 
         <receiver
-            android:name="org.literacyapp.keyboard.receiver.StudentUpdatedReceiver"
+            android:name="ai.elimu.keyboard.receiver.StudentUpdatedReceiver"
             android:enabled="true"
             android:exported="true">
 
             <intent-filter>
-                <action android:name="literacyapp.intent.action.STUDENT_UPDATED" />
+                <action android:name="ai.elimu.intent.action.STUDENT_UPDATED" />
             </intent-filter>
         </receiver>
     </application>

@@ -1,4 +1,4 @@
-package org.literacyapp.keyboard;
+package ai.elimu.keyboard;
 
 import org.junit.Test;
 

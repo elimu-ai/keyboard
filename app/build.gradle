@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdk 35
-    namespace "org.literacyapp.keyboard"
+    namespace "ai.elimu.keyboard"
 
     defaultConfig {
         minSdkVersion 21
