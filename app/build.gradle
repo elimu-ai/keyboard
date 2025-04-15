@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: `maven-release`
+apply plugin: 'maven-release'
 
 android {
     compileSdk 35
@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 26
         targetSdkVersion 35
-        versionCode 1000006
-        versionName "1.0.6"
+        versionCode 1000007
+        versionName "1.0.7-SNAPSHOT"
     }
 
     buildTypes {
