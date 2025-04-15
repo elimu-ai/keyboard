@@ -1,6 +1,24 @@
 # Keyboard ⌨️
 
+[![Release](https://jitpack.io/v/elimu-ai/keyboard.svg)](https://jitpack.io/#elimu-ai/keyboard)
 Custom Android IME keyboard which systematically introduces new letters and numbers.
+
+## Installation
+
+> [!IMPORTANT]
+> Note: This app depends on the [elimu.ai Content Provider](https://github.com/elimu-ai/content-provider) to be installed.
+
+## Development 👩🏽‍💻
+
+Compile APK:
+
+```
+./gradlew clean build
+```
+
+### Content Provider Utils 📦
+
+If you want to make changes to the elimu.ai Content Provider's utility library, see testing instructions at https://github.com/elimu-ai/content-provider/blob/main/README.md#utils-snapshot
 
 ---
 
@@ -8,7 +26,7 @@ Custom Android IME keyboard which systematically introduces new letters and numb
   <img src="https://github.com/elimu-ai/webapp/blob/main/src/main/webapp/static/img/logo-text-256x78.png" />
 </p>
 <p align="center">
-  elimu.ai - Free open-source learning software for out-of-school children ✨🚀
+  elimu.ai - Free open-source learning software for out-of-school children 🚀✨
 </p>
 <p align="center">
   <a href="https://elimu.ai">Website 🌐</a>
