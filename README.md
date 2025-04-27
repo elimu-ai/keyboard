@@ -1,6 +1,6 @@
-# Keyboard ⌨️
+[![Release](https://jitpack.io/v/elimu-ai/keyboard.svg)](https://jitpack.io/#ai.elimu/keyboard)
 
-[![Release](https://jitpack.io/v/elimu-ai/keyboard.svg)](https://jitpack.io/#elimu-ai/keyboard)
+# Keyboard ⌨️
 
 Custom Android IME keyboard which systematically introduces new letters and numbers.
 
