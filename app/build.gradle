@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'maven-publish'
 
 android {
-    compileSdk 35
     namespace "ai.elimu.keyboard"
+    compileSdk 35
 
     defaultConfig {
         minSdkVersion 26
@@ -13,6 +13,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix ".debug"
+        }
         release {
             minifyEnabled false
         }
