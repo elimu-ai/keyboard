@@ -1,8 +1,12 @@
-[![Release](https://jitpack.io/v/elimu-ai/keyboard.svg)](https://jitpack.io/#ai.elimu/keyboard)
+[![](https://jitpack.io/v/elimu-ai/keyboard.svg)](https://jitpack.io/#ai.elimu/keyboard)
 
 # Keyboard ⌨️
 
 Custom Android IME keyboard which systematically introduces new letters and numbers.
+
+Literacy skills:
+* [`LETTER_IDENTIFICATION`](https://github.com/elimu-ai/wiki/blob/main/literacy-skills/LETTER_IDENTIFICATION.md)
+* [`NUMBER_IDENTIFICATION`](https://github.com/elimu-ai/wiki/blob/main/numeracy-skills/NUMBER_IDENTIFICATION.md)
 
 ## Installation
 

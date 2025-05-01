@@ -90,11 +90,8 @@ public class ImeService extends InputMethodService implements KeyboardView.OnKey
         InputConnection ic = getCurrentInputConnection();
 
         Locale locale = getResources().getConfiguration().locale;
-        if (locale.getLanguage().startsWith("sw")) {
-            playClickSw(primaryCode);
-        } else {
-            playClick(primaryCode);
-        }
+        Log.d(getClass().getName(), "locale: " + locale);
+        playClick(primaryCode);
 
         switch(primaryCode){
             case Keyboard.KEYCODE_DELETE:
@@ -223,128 +220,6 @@ public class ImeService extends InputMethodService implements KeyboardView.OnKey
                 break;
             case 120:
                 MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_x);
-                break;
-            case 121:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_y);
-                break;
-            case 122:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_z);
-                break;
-
-            case 32:
-                audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR);
-                break;
-            case Keyboard.KEYCODE_DONE:
-            case 10:
-                audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_RETURN);
-                break;
-            case Keyboard.KEYCODE_DELETE:
-                audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE);
-                break;
-            default: audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
-        }
-    }
-
-    private void playClickSw(int keyCode){
-        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-
-        switch(keyCode) {
-            case 48:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_0);
-                break;
-            case 49:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_1);
-                break;
-            case 50:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_2);
-                break;
-            case 51:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_3);
-                break;
-            case 52:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_4);
-                break;
-            case 53:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_5);
-                break;
-            case 54:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_6);
-                break;
-            case 55:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_7);
-                break;
-            case 56:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_8);
-                break;
-            case 57:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_9);
-                break;
-
-            case 97:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_a);
-                break;
-            case 98:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_b);
-                break;
-            case 99:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_c);
-                break;
-            case 100:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_d);
-                break;
-            case 101:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_e);
-                break;
-            case 102:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_f);
-                break;
-            case 103:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_g);
-                break;
-            case 104:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_h);
-                break;
-            case 105:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_i);
-                break;
-            case 106:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_j);
-                break;
-            case 107:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_k);
-                break;
-            case 108:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_l);
-                break;
-            case 109:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_m);
-                break;
-            case 110:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_n);
-                break;
-            case 111:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_o);
-                break;
-            case 112:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_p);
-                break;
-            case 114:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_r);
-                break;
-            case 115:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_s);
-                break;
-            case 116:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_t);
-                break;
-            case 117:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_u);
-                break;
-            case 118:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_v);
-                break;
-            case 119:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_w);
                 break;
             case 121:
                 MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_y);
