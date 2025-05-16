@@ -12,10 +12,10 @@ class StudentUpdatedReceiver : BroadcastReceiver() {
 
         // Customize the user interface to match the current Student's level
         val availableLetters = intent.getStringArrayListExtra("availableLetters")
-        Log.i(javaClass.getName(), "availableLetters: " + availableLetters)
+        Log.i(javaClass.getName(), "availableLetters: $availableLetters")
 
         val availableNumbers = intent.getStringArrayListExtra("availableNumbers")
-        Log.i(javaClass.getName(), "availableNumbers: " + availableNumbers)
+        Log.i(javaClass.getName(), "availableNumbers: $availableNumbers")
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
@@ -24,7 +24,7 @@ class StudentUpdatedReceiver : BroadcastReceiver() {
             for (availableLetter in availableLetters) {
                 availableLetterSet.add(availableLetter)
             }
-            Log.i(javaClass.getName(), "Storing availableLettersSet: " + availableLetterSet)
+            Log.i(javaClass.getName(), "Storing availableLettersSet: $availableLetterSet")
             sharedPreferences.edit().putStringSet(PREF_STUDENT_LETTERS, availableLetterSet).commit()
         }
 
@@ -33,7 +33,7 @@ class StudentUpdatedReceiver : BroadcastReceiver() {
             for (availableNumber in availableNumbers) {
                 availableNumberSet.add(availableNumber)
             }
-            Log.i(javaClass.getName(), "Storing availableNumbersSet: " + availableNumberSet)
+            Log.i(javaClass.getName(), "Storing availableNumbersSet: $availableNumberSet")
             sharedPreferences.edit().putStringSet(PREF_STUDENT_NUMBERS, availableNumberSet).commit()
         }
     }
