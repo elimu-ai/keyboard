@@ -1,51 +1,45 @@
-package ai.elimu.keyboard.receiver;
+package ai.elimu.keyboard.receiver
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.util.Log;
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.preference.PreferenceManager
+import android.util.Log
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
-public class StudentUpdatedReceiver extends BroadcastReceiver {
-
-    public static final String PREF_STUDENT_LETTERS = "pref_student_letters";
-    public static final String PREF_STUDENT_NUMBERS = "pref_student_numbers";
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        Log.i(getClass().getName(), "onReceive");
+class StudentUpdatedReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context?, intent: Intent) {
+        Log.i(javaClass.getName(), "onReceive")
 
         // Customize the user interface to match the current Student's level
+        val availableLetters = intent.getStringArrayListExtra("availableLetters")
+        Log.i(javaClass.getName(), "availableLetters: " + availableLetters)
 
-        ArrayList<String> availableLetters = intent.getStringArrayListExtra("availableLetters");
-        Log.i(getClass().getName(), "availableLetters: " + availableLetters);
+        val availableNumbers = intent.getStringArrayListExtra("availableNumbers")
+        Log.i(javaClass.getName(), "availableNumbers: " + availableNumbers)
 
-        ArrayList<String> availableNumbers = intent.getStringArrayListExtra("availableNumbers");
-        Log.i(getClass().getName(), "availableNumbers: " + availableNumbers);
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
         if (availableLetters != null) {
-            Set<String> availableLetterSet = new HashSet<>();
-            for (String availableLetter : availableLetters) {
-                availableLetterSet.add(availableLetter);
+            val availableLetterSet: MutableSet<String?> = HashSet<String?>()
+            for (availableLetter in availableLetters) {
+                availableLetterSet.add(availableLetter)
             }
-            Log.i(getClass().getName(), "Storing availableLettersSet: " + availableLetterSet);
-            sharedPreferences.edit().putStringSet(PREF_STUDENT_LETTERS, availableLetterSet).commit();
+            Log.i(javaClass.getName(), "Storing availableLettersSet: " + availableLetterSet)
+            sharedPreferences.edit().putStringSet(PREF_STUDENT_LETTERS, availableLetterSet).commit()
         }
 
         if (availableNumbers != null) {
-            Set<String> availableNumberSet = new HashSet<>();
-            for (String availableNumber : availableNumbers) {
-                availableNumberSet.add(availableNumber);
+            val availableNumberSet: MutableSet<String?> = HashSet<String?>()
+            for (availableNumber in availableNumbers) {
+                availableNumberSet.add(availableNumber)
             }
-            Log.i(getClass().getName(), "Storing availableNumbersSet: " + availableNumberSet);
-            sharedPreferences.edit().putStringSet(PREF_STUDENT_NUMBERS, availableNumberSet).commit();
+            Log.i(javaClass.getName(), "Storing availableNumbersSet: " + availableNumberSet)
+            sharedPreferences.edit().putStringSet(PREF_STUDENT_NUMBERS, availableNumberSet).commit()
         }
+    }
+
+    companion object {
+        const val PREF_STUDENT_LETTERS: String = "pref_student_letters"
+        const val PREF_STUDENT_NUMBERS: String = "pref_student_numbers"
     }
 }
