@@ -1,269 +1,171 @@
-package ai.elimu.keyboard;
+package ai.elimu.keyboard
 
-import android.content.SharedPreferences;
-import android.inputmethodservice.InputMethodService;
-import android.inputmethodservice.Keyboard;
-import android.inputmethodservice.KeyboardView;
-import android.media.AudioManager;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.InputConnection;
+import ai.elimu.keyboard.receiver.StudentUpdatedReceiver
+import ai.elimu.keyboard.util.MediaPlayerHelper
+import android.inputmethodservice.InputMethodService
+import android.inputmethodservice.Keyboard
+import android.inputmethodservice.KeyboardView
+import android.inputmethodservice.KeyboardView.OnKeyboardActionListener
+import android.media.AudioManager
+import android.preference.PreferenceManager
+import android.util.Log
+import android.view.KeyEvent
+import android.view.View
 
-import ai.elimu.keyboard.receiver.StudentUpdatedReceiver;
-import ai.elimu.keyboard.util.MediaPlayerHelper;
+class ImeService : InputMethodService(), OnKeyboardActionListener {
+    private var keyboardView: KeyboardView? = null
 
-import java.util.Locale;
-import java.util.Set;
+    private var keyboard: Keyboard? = null
 
-public class ImeService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
+    private var caps = false
 
-    private KeyboardView keyboardView;
-
-    private Keyboard keyboard;
-
-    private boolean caps = false;
-
-    @Override
-    public void onCreate() {
-        Log.i(getClass().getName(), "onCreate");
-        super.onCreate();
+    override fun onCreate() {
+        Log.i(javaClass.getName(), "onCreate")
+        super.onCreate()
     }
 
-    @Override
-    public View onCreateInputView() {
-        Log.i(getClass().getName(), "onCreateInputView");
+    override fun onCreateInputView(): View {
+        Log.i(javaClass.getName(), "onCreateInputView")
 
         // Personalize available letters/numbers
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Set<String> availableLettersSet = sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_LETTERS, null);
-        Log.d(getClass().getName(), "availableLettersSet: " + availableLettersSet);
-        Set<String> availableNumbersSet = sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_NUMBERS, null);
-        Log.d(getClass().getName(), "availableNumbersSet: " + availableNumbersSet);
+        val sharedPreferences =
+            PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+        val availableLettersSet =
+            sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_LETTERS, null)
+        Log.d(javaClass.getName(), "availableLettersSet: " + availableLettersSet)
+        val availableNumbersSet =
+            sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_NUMBERS, null)
+        Log.d(javaClass.getName(), "availableNumbersSet: " + availableNumbersSet)
 
         // TODO: add custom Keyboard
         if (availableLettersSet == null) {
-            keyboard = new Keyboard(this, R.xml.qwerty);
-        } else if (availableLettersSet.size() <= 3) {
-            keyboard = new Keyboard(this, R.xml.qwerty);
-        } else if (availableLettersSet.size() == 4) {
-            keyboard = new Keyboard(this, R.xml.qwerty_4);
-        } else if (availableLettersSet.size() == 5) {
-            keyboard = new Keyboard(this, R.xml.qwerty_5);
-        } else if (availableLettersSet.size() == 6) {
-            keyboard = new Keyboard(this, R.xml.qwerty_6);
-        } else if (availableLettersSet.size() == 7) {
-            keyboard = new Keyboard(this, R.xml.qwerty_7);
-        } else if (availableLettersSet.size() == 8) {
-            keyboard = new Keyboard(this, R.xml.qwerty_8);
+            keyboard = Keyboard(this, R.xml.qwerty)
+        } else if (availableLettersSet.size <= 3) {
+            keyboard = Keyboard(this, R.xml.qwerty)
+        } else if (availableLettersSet.size == 4) {
+            keyboard = Keyboard(this, R.xml.qwerty_4)
+        } else if (availableLettersSet.size == 5) {
+            keyboard = Keyboard(this, R.xml.qwerty_5)
+        } else if (availableLettersSet.size == 6) {
+            keyboard = Keyboard(this, R.xml.qwerty_6)
+        } else if (availableLettersSet.size == 7) {
+            keyboard = Keyboard(this, R.xml.qwerty_7)
+        } else if (availableLettersSet.size == 8) {
+            keyboard = Keyboard(this, R.xml.qwerty_8)
         } else {
-            keyboard = new Keyboard(this, R.xml.qwerty_8);
+            keyboard = Keyboard(this, R.xml.qwerty_8)
         }
 
-        keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
-        keyboardView.setKeyboard(keyboard);
-        keyboardView.setPreviewEnabled(false);
-        keyboardView.setOnKeyboardActionListener(this);
+        keyboardView = getLayoutInflater().inflate(R.layout.keyboard, null) as KeyboardView
+        keyboardView!!.setKeyboard(keyboard)
+        keyboardView!!.setPreviewEnabled(false)
+        keyboardView!!.setOnKeyboardActionListener(this)
 
-        return keyboardView;
+        return keyboardView!!
     }
 
-    @Override
-    public void updateFullscreenMode() {
-        Log.i(getClass().getName(), "updateFullscreenMode");
-//        super.updateFullscreenMode();
+    override fun updateFullscreenMode() {
+        Log.i(javaClass.getName(), "updateFullscreenMode")
+        //        super.updateFullscreenMode();
     }
 
-    @Override
-    public void onPress(int i) {
-
+    override fun onPress(i: Int) {
     }
 
-    @Override
-    public void onRelease(int i) {
-
+    override fun onRelease(i: Int) {
     }
 
-    @Override
-    public void onKey(int primaryCode, int[] keyCodes) {
-        InputConnection ic = getCurrentInputConnection();
+    override fun onKey(primaryCode: Int, keyCodes: IntArray?) {
+        val ic = getCurrentInputConnection()
 
-        Locale locale = getResources().getConfiguration().locale;
-        Log.d(getClass().getName(), "locale: " + locale);
-        playClick(primaryCode);
+        val locale = getResources().getConfiguration().locale
+        Log.d(javaClass.getName(), "locale: " + locale)
+        playClick(primaryCode)
 
-        switch(primaryCode){
-            case Keyboard.KEYCODE_DELETE:
-                ic.deleteSurroundingText(1, 0);
-                break;
-            case Keyboard.KEYCODE_SHIFT:
-                caps = !caps;
-                keyboard.setShifted(caps);
-                keyboardView.invalidateAllKeys();
-                break;
-            case Keyboard.KEYCODE_DONE:
-                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
-                break;
-            default:
-                char code = (char)primaryCode;
+        when (primaryCode) {
+            Keyboard.KEYCODE_DELETE -> ic.deleteSurroundingText(1, 0)
+            Keyboard.KEYCODE_SHIFT -> {
+                caps = !caps
+                keyboard!!.setShifted(caps)
+                keyboardView!!.invalidateAllKeys()
+            }
+
+            Keyboard.KEYCODE_DONE -> ic.sendKeyEvent(
+                KeyEvent(
+                    KeyEvent.ACTION_DOWN,
+                    KeyEvent.KEYCODE_ENTER
+                )
+            )
+
+            else -> {
+                var code = primaryCode.toChar()
                 if (Character.isLetter(code) && caps) {
-                    code = Character.toUpperCase(code);
+                    code = code.uppercaseChar()
                 }
-                ic.commitText(String.valueOf(code), 1);
+                ic.commitText(code.toString(), 1)
+            }
         }
     }
 
-    private void playClick(int keyCode){
-        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+    private fun playClick(keyCode: Int) {
+        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
 
-        switch(keyCode) {
-            case 48:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_0);
-                break;
-            case 49:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_1);
-                break;
-            case 50:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_2);
-                break;
-            case 51:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_3);
-                break;
-            case 52:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_4);
-                break;
-            case 53:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_5);
-                break;
-            case 54:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_6);
-                break;
-            case 55:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_7);
-                break;
-            case 56:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_8);
-                break;
-            case 57:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_9);
-                break;
-
-            case 97:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_a);
-                break;
-            case 98:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_b);
-                break;
-            case 99:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_c);
-                break;
-            case 100:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_d);
-                break;
-            case 101:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_e);
-                break;
-            case 102:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_f);
-                break;
-            case 103:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_g);
-                break;
-            case 104:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_h);
-                break;
-            case 105:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_i);
-                break;
-            case 106:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_j);
-                break;
-            case 107:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_k);
-                break;
-            case 108:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_l);
-                break;
-            case 109:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_m);
-                break;
-            case 110:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_n);
-                break;
-            case 111:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_o);
-                break;
-            case 112:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_p);
-                break;
-            case 113:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_qu);
-                break;
-            case 114:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_r);
-                break;
-            case 115:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_s);
-                break;
-            case 116:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_t);
-                break;
-            case 117:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_u);
-                break;
-            case 118:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_v);
-                break;
-            case 119:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_w);
-                break;
-            case 120:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_x);
-                break;
-            case 121:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_y);
-                break;
-            case 122:
-                MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_z);
-                break;
-
-            case 32:
-                audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR);
-                break;
-            case Keyboard.KEYCODE_DONE:
-            case 10:
-                audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_RETURN);
-                break;
-            case Keyboard.KEYCODE_DELETE:
-                audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE);
-                break;
-            default: audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);
+        when (keyCode) {
+            48 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_0)
+            49 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_1)
+            50 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_2)
+            51 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_3)
+            52 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_4)
+            53 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_5)
+            54 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_6)
+            55 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_7)
+            56 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_8)
+            57 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.digit_9)
+            97 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_a)
+            98 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_b)
+            99 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_c)
+            100 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_d)
+            101 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_e)
+            102 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_f)
+            103 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_g)
+            104 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_h)
+            105 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_i)
+            106 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_j)
+            107 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_k)
+            108 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_l)
+            109 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_m)
+            110 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_n)
+            111 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_o)
+            112 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_p)
+            113 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_qu)
+            114 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_r)
+            115 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_s)
+            116 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_t)
+            117 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_u)
+            118 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_v)
+            119 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_w)
+            120 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_x)
+            121 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_y)
+            122 -> MediaPlayerHelper.play(getApplicationContext(), R.raw.letter_sound_z)
+            32 -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_SPACEBAR)
+            Keyboard.KEYCODE_DONE, 10 -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_RETURN)
+            Keyboard.KEYCODE_DELETE -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_DELETE)
+            else -> audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD)
         }
     }
 
-    @Override
-    public void onText(CharSequence charSequence) {
-
+    override fun onText(charSequence: CharSequence?) {
     }
 
-    @Override
-    public void swipeLeft() {
-
+    override fun swipeLeft() {
     }
 
-    @Override
-    public void swipeRight() {
-
+    override fun swipeRight() {
     }
 
-    @Override
-    public void swipeDown() {
-
+    override fun swipeDown() {
     }
 
-    @Override
-    public void swipeUp() {
-
+    override fun swipeUp() {
     }
 }
