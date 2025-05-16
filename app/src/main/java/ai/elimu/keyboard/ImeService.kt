@@ -32,10 +32,10 @@ class ImeService : InputMethodService(), OnKeyboardActionListener {
             PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val availableLettersSet =
             sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_LETTERS, null)
-        Log.d(javaClass.getName(), "availableLettersSet: " + availableLettersSet)
+        Log.d(javaClass.getName(), "availableLettersSet: $availableLettersSet")
         val availableNumbersSet =
             sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_NUMBERS, null)
-        Log.d(javaClass.getName(), "availableNumbersSet: " + availableNumbersSet)
+        Log.d(javaClass.getName(), "availableNumbersSet: $availableNumbersSet")
 
         // TODO: add custom Keyboard
         if (availableLettersSet == null) {
@@ -79,7 +79,7 @@ class ImeService : InputMethodService(), OnKeyboardActionListener {
         val ic = getCurrentInputConnection()
 
         val locale = resources.configuration.locale
-        Log.d(javaClass.getName(), "locale: " + locale)
+        Log.d(javaClass.getName(), "locale: $locale")
         playClick(primaryCode)
 
         when (primaryCode) {
