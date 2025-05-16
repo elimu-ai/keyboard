@@ -7,15 +7,18 @@ import android.preference.PreferenceManager
 import android.util.Log
 
 class StudentUpdatedReceiver : BroadcastReceiver() {
+    
+    private val TAG = javaClass.getName()
+    
     override fun onReceive(context: Context?, intent: Intent) {
-        Log.i(javaClass.getName(), "onReceive")
+        Log.i(TAG, "onReceive")
 
         // Customize the user interface to match the current Student's level
         val availableLetters = intent.getStringArrayListExtra("availableLetters")
-        Log.i(javaClass.getName(), "availableLetters: $availableLetters")
+        Log.i(TAG, "availableLetters: $availableLetters")
 
         val availableNumbers = intent.getStringArrayListExtra("availableNumbers")
-        Log.i(javaClass.getName(), "availableNumbers: $availableNumbers")
+        Log.i(TAG, "availableNumbers: $availableNumbers")
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
@@ -24,7 +27,7 @@ class StudentUpdatedReceiver : BroadcastReceiver() {
             for (availableLetter in availableLetters) {
                 availableLetterSet.add(availableLetter)
             }
-            Log.i(javaClass.getName(), "Storing availableLettersSet: $availableLetterSet")
+            Log.i(TAG, "Storing availableLettersSet: $availableLetterSet")
             sharedPreferences.edit().putStringSet(PREF_STUDENT_LETTERS, availableLetterSet).commit()
         }
 
@@ -33,7 +36,7 @@ class StudentUpdatedReceiver : BroadcastReceiver() {
             for (availableNumber in availableNumbers) {
                 availableNumberSet.add(availableNumber)
             }
-            Log.i(javaClass.getName(), "Storing availableNumbersSet: $availableNumberSet")
+            Log.i(TAG, "Storing availableNumbersSet: $availableNumberSet")
             sharedPreferences.edit().putStringSet(PREF_STUDENT_NUMBERS, availableNumberSet).commit()
         }
     }

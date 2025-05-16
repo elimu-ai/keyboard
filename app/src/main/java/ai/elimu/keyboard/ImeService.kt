@@ -13,6 +13,9 @@ import android.view.KeyEvent
 import android.view.View
 
 class ImeService : InputMethodService(), OnKeyboardActionListener {
+    
+    private val TAG = javaClass.getName()
+
     private var keyboardView: KeyboardView? = null
 
     private var keyboard: Keyboard? = null
@@ -20,22 +23,22 @@ class ImeService : InputMethodService(), OnKeyboardActionListener {
     private var caps = false
 
     override fun onCreate() {
-        Log.i(javaClass.getName(), "onCreate")
+        Log.i(TAG, "onCreate")
         super.onCreate()
     }
 
     override fun onCreateInputView(): View {
-        Log.i(javaClass.getName(), "onCreateInputView")
+        Log.i(TAG, "onCreateInputView")
 
         // Personalize available letters/numbers
         val sharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(applicationContext)
         val availableLettersSet =
             sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_LETTERS, null)
-        Log.d(javaClass.getName(), "availableLettersSet: $availableLettersSet")
+        Log.d(TAG, "availableLettersSet: $availableLettersSet")
         val availableNumbersSet =
             sharedPreferences.getStringSet(StudentUpdatedReceiver.PREF_STUDENT_NUMBERS, null)
-        Log.d(javaClass.getName(), "availableNumbersSet: $availableNumbersSet")
+        Log.d(TAG, "availableNumbersSet: $availableNumbersSet")
 
         // TODO: add custom Keyboard
         if (availableLettersSet == null) {
@@ -65,7 +68,7 @@ class ImeService : InputMethodService(), OnKeyboardActionListener {
     }
 
     override fun updateFullscreenMode() {
-        Log.i(javaClass.getName(), "updateFullscreenMode")
+        Log.i(TAG, "updateFullscreenMode")
         //        super.updateFullscreenMode();
     }
 
@@ -79,7 +82,7 @@ class ImeService : InputMethodService(), OnKeyboardActionListener {
         val ic = getCurrentInputConnection()
 
         val locale = resources.configuration.locale
-        Log.d(javaClass.getName(), "locale: $locale")
+        Log.d(TAG, "locale: $locale")
         playClick(primaryCode)
 
         when (primaryCode) {
