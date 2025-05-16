@@ -1,0 +1,19 @@
+[versions]
+junit = "4.13.2"
+androidXJunit = "1.2.1"
+elimuContentProvider = "1.3.22"
+
+androidXEspresso = "3.6.1"
+agp = "8.8.2"
+kotlin = "2.1.21"
+
+[libraries]
+androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidXEspresso" }
+agp = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+elimu-content-provider = { group = "ai.elimu", name = "content-provider", version.ref = "elimuContentProvider" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidXJunit" }
+
+[plugins]
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
