@@ -1,5 +1,3 @@
-[![](https://jitpack.io/v/elimu-ai/keyboard.svg)](https://jitpack.io/#ai.elimu/keyboard)
-
 # Keyboard ⌨️
 
 Custom Android IME keyboard which systematically introduces new letters and numbers.
