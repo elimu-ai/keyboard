@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.preference.PreferenceManager
 import android.util.Log
+import androidx.core.content.edit
 
 class StudentUpdatedReceiver : BroadcastReceiver() {
     
@@ -28,7 +29,12 @@ class StudentUpdatedReceiver : BroadcastReceiver() {
                 availableLetterSet.add(availableLetter)
             }
             Log.i(TAG, "Storing availableLettersSet: $availableLetterSet")
-            sharedPreferences.edit().putStringSet(PREF_STUDENT_LETTERS, availableLetterSet).commit()
+            sharedPreferences.edit(commit = true) {
+                putStringSet(
+                    PREF_STUDENT_LETTERS,
+                    availableLetterSet
+                )
+            }
         }
 
         if (availableNumbers != null) {
@@ -37,7 +43,12 @@ class StudentUpdatedReceiver : BroadcastReceiver() {
                 availableNumberSet.add(availableNumber)
             }
             Log.i(TAG, "Storing availableNumbersSet: $availableNumberSet")
-            sharedPreferences.edit().putStringSet(PREF_STUDENT_NUMBERS, availableNumberSet).commit()
+            sharedPreferences.edit(commit = true) {
+                putStringSet(
+                    PREF_STUDENT_NUMBERS,
+                    availableNumberSet
+                )
+            }
         }
     }
 
