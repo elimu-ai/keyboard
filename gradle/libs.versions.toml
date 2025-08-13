@@ -6,7 +6,7 @@ elimuContentProvider = "1.4.46"
 androidXEspresso = "3.6.1"
 agp = "8.8.2"
 kotlin = "2.2.0"
-coreKtx = "1.16.0"
+coreKtx = "1.17.0"
 
 [libraries]
 androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidXEspresso" }
