@@ -5,7 +5,7 @@ elimuContentProvider = "1.4.46"
 
 androidXEspresso = "3.6.1"
 agp = "8.8.2"
-kotlin = "2.2.0"
+kotlin = "2.2.10"
 coreKtx = "1.16.0"
 
 [libraries]
