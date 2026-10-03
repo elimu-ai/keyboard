@@ -1,17 +1,16 @@
 [versions]
+elimuContentProvider = "1.4.78"
 junit = "4.13.2"
 androidXJunit = "1.3.0"
-elimuContentProvider = "1.4.77"
-
 androidXEspresso = "3.7.0"
 agp = "8.9.1"
 kotlin = "2.2.0"
 coreKtx = "1.16.0"
 
 [libraries]
+elimu-content-provider = { group = "ai.elimu", name = "content-provider", version.ref = "elimuContentProvider" }
 androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidXEspresso" }
 agp = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
-elimu-content-provider = { group = "ai.elimu", name = "content-provider", version.ref = "elimuContentProvider" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidXJunit" }
